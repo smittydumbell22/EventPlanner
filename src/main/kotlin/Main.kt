@@ -24,12 +24,12 @@ fun main(args: Array<String>) {
                             while (selection != 3) {
                                 when (selection) {
                                     1 -> {
-                                        print("Guest Name: ")
+                                        print("Guest Name: ") /*Here the user inputs a name*/
                                         val guest = readLine()!!
                                         event.addGuest(guest)
                                     }
                                     2 -> {
-                                        event.removeGuest()
+                                        event.removeGuest() /*for if the user would like to remove a name*/
                                     }
                                 }
                                 selection = askSelection(arrayOf("Add Guests", "Remove Guests", "Done"))
@@ -38,7 +38,7 @@ fun main(args: Array<String>) {
                         2 -> {
                             event.displayFoods()
                             var selection = askSelection(arrayOf("Add Food", "Remove Food", "Done"))
-                            /*displays guests, and allows user to edit guest list in the form of adding and removing.*/
+                            /*displays foods, and allows user to edit food list in the form of adding and removing.*/
                             while (selection != 3) {
                                 when (selection) {
                                     1 -> {
