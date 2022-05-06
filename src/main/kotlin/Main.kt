@@ -36,19 +36,19 @@ fun main(args: Array<String>) {
                             }
                         }
                         2 -> {
-                            event.displayGuests()
+                            event.displayFoods()
                             var selection = askSelection(arrayOf("Add Food", "Remove Food", "Done"))
                             /*displays guests, and allows user to edit guest list in the form of adding and removing.*/
                             while (selection != 3) {
                                 when (selection) {
                                     1 -> {
-                                        /* print("Guest Name: ")
-                                         val guest = readLine()!!
-                                         event.addGuest(guest)*/
-                                        println("Adding Food")
+                                         print("Food Name: ")
+                                         val food = readLine()!!
+                                         event.addFood(food)
+
                                     }
                                     2 -> {
-                                        println("Removing Food")
+                                        event.removeFood()
                                     }
                                 }
                                 selection = askSelection(arrayOf("Add Food", "Remove Food", "Done"))
@@ -86,6 +86,7 @@ fun askSelection(options: Array<String>): Int {
 class Event {
     var name = ""
     var guests: MutableList<String> = mutableListOf<String>()
+    var foods: MutableList<String> = mutableListOf<String>()
 
 
     fun promptName() {
@@ -106,10 +107,28 @@ class Event {
     }
 
     fun displayGuests() {
-        println("guests")
+        println("Guests")
         for (guest in guests) {
-            println("$guest")
+            println("\t$guest")
         }
 
+    }
+    fun displayFoods() {
+        println("Foods")
+        for (food in foods) {
+            println("\t$food")
+        }
+
+    }
+    fun addFood(food: String) {
+        foods.add(food)
+        displayFoods()
+
+    }
+
+    fun removeFood() {
+        val foodIndex = askSelection(foods.toTypedArray())
+        foods.removeAt(foodIndex - 1)
+        displayFoods()
     }
 }
